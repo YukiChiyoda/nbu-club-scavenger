@@ -4,16 +4,14 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
+from authorization import cookies
+
 
 def setup_driver():
     options = webdriver.ChromeOptions()
     driver = webdriver.Chrome(options=options)
 
     driver.get("https://ehall.nbu.edu.cn")
-
-    cookies = {
-        # add cookies here
-    }
 
     for name, value in cookies.items():
         driver.add_cookie(
@@ -32,12 +30,10 @@ def main():
     wait = WebDriverWait(driver, 20)
 
     try:
-        driver.get(
-            "https://ehall.nbu.edu.cn/portal/html/select_role.html?appId=5002777488276451"
-        )
-        driver.get(
-            "https://ehall.nbu.edu.cn/tw/sys/nd54st/*default/index.do?t_s=1734320119872&amp_sec_version_=1&gid_=bnZnaWhPL0xQM0hsMi9SSS9ybUtpWXhHT3dFeWplNXlldHpOSUxXTi9WRGpKNkJsQWRSNitYcXhTZll1QXBtN3Z0b3ZrRDJwNzl1UzF5cG1TWFlDMlE9PQ&EMAP_LANG=zh&THEME=indigo#/myst"
-        )
+        # driver.get(
+        #     "https://ehall.nbu.edu.cn/portal/html/select_role.html?appId=5002777488276451"
+        # )
+        driver.get("https://ehall.nbu.edu.cn/tw/sys/nd54st/*default/index.do#/myst")
 
         time.sleep(3)
 
